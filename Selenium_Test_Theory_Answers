@@ -1,0 +1,36 @@
+Capgemini Assessment - Theoretical Answers
+
+Sayan Mondal - 2470309
+
+1. Write the steps to read the data from excel
+To read data from an Excel file in Python using the openpyxl library:
+Step 1: Install the library using pip install openpyxl
+Step 2: Import it: import openpyxl
+Step 3: Load the workbook using workbook = openpyxl.load_workbook(filename.xlsx)
+Step 4: Select the active worksheet using sheet = workbook.active
+Step 5: Read data from cells using sheet.cell(row=i, column=j).value or iterate:
+
+for row in sheet.iter_rows(min_row=2, values_only=True):
+    print(row[0], row[1])
+
+2. Write the syntax for the xpath to locate the elements using
+- attributes: //tagname[@attribute=value]
+  Example: //input[@id=username]
+
+- text: //tagname[text()=Exact text here]
+  Example: //button[text()=Submit]
+
+- group indexing: (//tagname[@attribute=value])[index_number] (Note: Index starts at 1)
+  Example: (//input[@type=text])[2]
+
+- contains: //tagname[contains(@attribute_or_text, partial_string)]
+  Example: //a[contains(text(), Log)] or //div[contains(@class, button)]
+
+3. Which locator is generally the fastest in Selenium?
+The ID locator is generally the fastest because it uses the native document.getElementById() Javascript command which is highly optimized by browsers to find unique elements quickly.
+
+4. Which wait is recommended for handling dynamic elements in Selenium?
+Explicit Wait (using WebDriverWait along with expected_conditions) is highly recommended. It waits dynamically for a specific condition (e.g., element to be visible or clickable) to be met before proceeding, making your scripts more robust and faster than using hardcoded time.sleep().
+
+5. Which Selenium class is used to handle dropdown listboxes?
+The Select class from selenium.webdriver.support.ui is used. It provides helpful methods like select_by_visible_text(), select_by_value(), and select_by_index() to interact with HTML <select> elements.
